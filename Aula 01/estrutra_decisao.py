@@ -44,5 +44,3 @@ elif (materia == "Python"):
     print("Linguagem de programação muito fácil de aprender")
 else:
     print("Não conheço essa linguagem")
-
-
