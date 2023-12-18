@@ -5,7 +5,7 @@ import random
 def escolher_palavra():
     """Escolhe aleatoriamente uma palavra da lista."""
     palavras = ["python", "programacao", "computador", "teclado", "desenvolvimento"]
-    return random.choice(palavras)
+    return random.choice(palavras) #choice() retorna um elemento aleatorio de uma lista especifica
 
 def exibir_palavra_oculta(palavra, letras_certas):
     """Exibe a palavra oculta com as letras corretas adivinhadas."""
@@ -14,13 +14,17 @@ def exibir_palavra_oculta(palavra, letras_certas):
         if letra in letras_certas:
             palavra_oculta += letra
         else:
-            palavra_oculta += "_"
+            palavra_oculta += " _ "
     return palavra_oculta
 
 def jogar_forca():
     """Função principal para o jogo da forca."""
     palavra_secreta = escolher_palavra()
+    print(type(palavra_secreta))
+    
+    
     letras_corretas = []
+    print(type(letras_corretas))
     tentativas = 6  # Número máximo de tentativas
 
     print("Bem-vindo ao Jogo da Forca!")
@@ -32,12 +36,13 @@ def jogar_forca():
         # Solicitar uma letra ao jogador
         letra = input("Digite uma letra: ").lower() #Converte para letras minusculas
 
+        #Testa se digitou uma letra correta anterioemente 
         if letra in letras_corretas:
             print("Você já tentou essa letra. Tente novamente!")
             continue
 
         if letra in palavra_secreta:
-            letras_corretas.append(letra)
+            letras_corretas.append(letra) #append adiciona dados em um item
             print("Letra correta! :)")
         else:
             tentativas -= 1
@@ -45,6 +50,8 @@ def jogar_forca():
 
         # Verificar se o jogador ganhou
         if set(letras_corretas) == set(palavra_secreta):
+            print(type(palavra_secreta))
+            print(type(letras_corretas))
             print("\nParabéns! Você adivinhou a palavra:", palavra_secreta)
             break
 
